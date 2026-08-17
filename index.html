@@ -296,7 +296,56 @@
             </div>
         </div>
     </section>
+<!-- Packages Section -->
+    <section class="packages" id="packages">
+        <div class="section-header">
+            <h2>Training Packages</h2>
+            <p>Choose the right program to fast-track your driver's license.</p>
+        </div>
+        <div class="pricing-grid">
+            <div class="price-card">
+                <div>
+                    <div class="price-title">Starter Course</div>
+                    <div class="price-amount">$299</div>
+                    <ul class="price-features">
+                        <li>5 Hours Behind-the-Wheel</li>
+                        <li>Basic Maneuvers & Parking</li>
+                        <li>Road Safety Fundamentals</li>
+                        <li>Progress Evaluation Report</li>
+                    </ul>
+                </div>
+                <button class="btn-book">Select Package</button>
+            </div>
 
+            <div class="price-card featured">
+                <div>
+                    <div class="price-title">Complete Mastery</div>
+                    <div class="price-amount">$549</div>
+                    <ul class="price-features">
+                        <li>10 Hours Behind-the-Wheel</li>
+                        <li>Highway & Night Driving</li>
+                        <li>Parallel & Reverse Parking</li>
+                        <li>DMV Test Preparation & Car Use</li>
+                    </ul>
+                </div>
+                <button class="btn-book">Select Package</button>
+            </div>
+
+            <div class="price-card">
+                <div>
+                    <div class="price-title">Refresher Course</div>
+                    <div class="price-amount">$179</div>
+                    <ul class="price-features">
+                        <li>3 Hours Intensive Session</li>
+                        <li>Targeted Skill Improvement</li>
+                        <li>Anxiety Reduction Techniques</li>
+                        <li>Mock Road Test</li>
+                    </ul>
+                </div>
+                <button class="btn-book">Select Package</button>
+            </div>
+        </div>
+    </section
     <!-- FOOTER -->
     <footer>
         <div>&copy; 2026 Roadstar Driving School.</div>
@@ -306,6 +355,14 @@
             <a href="#">Privacy</a>
         </nav>
     </footer>
+<script>
+        // Mobile Menu Toggle Script
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('nav-menu');
 
+        hamburger.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+    </script>
 </body>
 </html>
