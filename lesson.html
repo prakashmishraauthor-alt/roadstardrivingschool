@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Driving Lessons | Roadstar Driving School</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #ffffff;
+            color: #111111;
+            overflow-x: hidden;
+            line-height: 1.5;
+        }
+
+        /* Header / Navbar */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 24px 6%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 0.95rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            text-decoration: none;
+            color: #111;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #555;
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover, nav a.active {
+            color: #111;
+        }
+
+        .subscribe-btn {
+            background-color: #111;
+            color: #fff !important;
+            padding: 8px 18px;
+            border-radius: 4px;
+            font-weight: 500;
+        }
+
+        .subscribe-btn:hover {
+            background-color: #333;
+        }
+
+        /* Hamburger Menu */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+        }
+
+        .hamburger span {
+            width: 24px;
+            height: 2px;
+            background: #111;
+            transition: 0.3s;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 150px 6% 60px;
+            text-align: center;
+            background: #fafafa;
+            border-bottom: 1px solid #eaeaea;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.2rem, 4vw, 3.8rem);
+            font-weight: 700;
+            letter-spacing: -1px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+            color: #111;
+        }
+
+        .hero p {
+            font-size: 1.05rem;
+            color: #666;
+            max-width: 650px;
+            margin: 0 auto;
+        }
+
+        /* Lesson Curriculum Section */
+        .lessons-container {
+            padding: 100px 6%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            margin-bottom: 60px;
+            text-align: center;
+        }
+
+        .section-title h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: -0.5px;
+            margin-bottom: 12px;
+        }
+
+        .section-title p {
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        .modules-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 32px;
+        }
+
+        .module-card {
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 40px;
+            background: #fff;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .module-card:hover {
+            border-color: #111;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        }
+
+        .module-number {
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #888;
+            margin-bottom: 16px;
+        }
+
+        .module-card h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        .module-card p {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 24px;
+        }
+
+        .skills-list {
+            list-style: none;
+            margin-bottom: 32px;
+        }
+
+        .skills-list li {
+            font-size: 0.88rem;
+            color: #444;
+            padding: 6px 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .skills-list li::before {
+            content: "•";
+            color: #111;
+            font-weight: bold;
+        }
+
+        .btn-select {
+            display: inline-block;
+            text-align: center;
+            width: 100%;
+            padding: 12px;
+            background: #111;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: background 0.3s ease;
+        }
+
+        .btn-select:hover {
+            background: #333;
+        }
+
+        /* Methodology Banner */
+        .methodology {
+            padding: 100px 6%;
+            background: #111;
+            color: #fff;
+            text-align: center;
+        }
+
+        .methodology-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .methodology h2 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            letter-spacing: -0.5px;
+        }
+
+        .methodology p {
+            color: #ccc;
+            font-size: 1rem;
+            line-height: 1.8;
+            margin-bottom: 40px;
+        }
+
+        /* Footer */
+        footer {
+            background: #f9f9f9;
+            padding: 60px 6%;
+            border-top: 1px solid #eaeaea;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.85rem;
+            color: #777;
+        }
+
+        footer .footer-links {
+            display: flex;
+            gap: 24px;
+        }
+
+        footer a {
+            text-decoration: none;
+            color: #555;
+        }
+
+        footer a:hover {
+            color: #111;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            nav {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: #fff;
+                padding: 24px;
+                box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+                border-bottom: 1px solid #eee;
+            }
+
+            nav.active {
+                display: flex;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .hero {
+                padding: 120px 5% 50px;
+            }
+
+            footer {
+                flex-direction: column;
+                gap: 20px;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header / Navbar -->
+    <header>
+        <a href="index.html" class="logo">Roadstar Driving School</a>
+        <div class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <nav id="nav-menu">
+            <a href="lesson.html" class="active">Lessons</a>
+            <a href="index.html#safety">Safety</a>
+            <a href="index.html#about">About</a>
+            <a href="index.html#packages" class="subscribe-btn">Book Now</a>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Structured Driving Modules</h1>
+        <p>Step-by-step training roadmaps engineered to transition beginners into safe, defensive motorists.</p>
+    </section>
+
+    <!-- Lessons Curriculum -->
+    <section class="lessons-container">
+        <div class="section-title">
+            <h2>Course Modules</h2>
+            <p>Select a learning track tailored to your current road experience.</p>
+        </div>
+
+        <div class="modules-grid">
+            <!-- Module 1 -->
+            <div class="module-card">
+                <div>
+                    <div class="module-number">Level 01</div>
+                    <h3>Beginner Fundamentals</h3>
+                    <p>Designed for first-time drivers needing complete familiarization with vehicle operations, controls, and basic road safety.</p>
+                    <ul class="skills-list">
+                        <li>Cockpit check & instrument overview</li>
+                        <li>Smooth steering, braking, & acceleration</li>
+                        <li>Basic intersection turns & signal rules</li>
+                        <li>Low-speed control maneuvers</li>
+                    </ul>
+                </div>
+                <a href="index.html#packages" class="btn-select">View Package</a>
+            </div>
+
+            <!-- Module 2 -->
+            <div class="module-card">
+                <div>
+                    <div class="module-number">Level 02</div>
+                    <h3>Traffic & Parking Mastery</h3>
+                    <p>Gain control in urban environments, busy street traffic, and various technical parking maneuvers.</p>
+                    <ul class="skills-list">
+                        <li>Parallel, angle, & reverse parking</li>
+                        <li>Lane changing & blind spot awareness</li>
+                        <li>Multi-lane roundabouts & traffic signals</li>
+                        <li>Pedestrian safety & defensive scanning</li>
+                    </ul>
+                </div>
+                <a href="index.html#packages" class="btn-select">View Package</a>
+            </div>
+
+            <!-- Module 3 -->
+            <div class="module-card">
+                <div>
+                    <div class="module-number">Level 03</div>
+                    <h3>High-Speed & Night Navigation</h3>
+                    <p>Advance your driving capability with high-speed highway merges and low-visibility night maneuvers.</p>
+                    <ul class="skills-list">
+                        <li>Expressway merging & speed control</li>
+                        <li>Night driving & beam adjustment</li>
+                        <li>Adverse weather response techniques</li>
+                        <li>Hazard perception & emergency braking</li>
+                    </ul>
+                </div>
+                <a href="index.html#packages" class="btn-select">View Package</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Training Methodology -->
+    <section class="methodology">
+        <div class="methodology-content">
+            <h2>Dual-Control Safety Standard</h2>
+            <p>Every lesson is conducted in modern vehicles equipped with secondary dual-pedal control systems, allowing your certified instructor to ensure total safety in real-time traffic situations.</p>
+            <a href="index.html#packages" class="subscribe-btn" style="text-decoration: none; padding: 12px 28px;">Book Your Lesson</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Roadstar Driving School. All rights reserved.</p>
+        <div class="footer-links">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
+            <a href="#">Contact</a>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Navigation Toggle
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('nav-menu');
+
+        hamburger.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+    </script>
+</body>
+</html>
