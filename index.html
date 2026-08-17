@@ -729,6 +729,67 @@
             alert('Thank you for booking! A Roadstar representative will contact you shortly.');
             bookingModal.classList.remove('active');
         }
+        <!-- Firebase SDKs -->
+<script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
+
+<script>
+  // 1. Replace with your actual Firebase project config
+  const firebaseConfig = {
+    apiKey: "YOUR_API_KEY",
+    authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
+    projectId: "YOUR_PROJECT_ID",
+    storageBucket: "YOUR_PROJECT_ID.appspot.com",
+    messagingSenderId: "YOUR_SENDER_ID",
+    appId: "YOUR_APP_ID"
+  };
+
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  const db = firebase.firestore();
+
+  let selectedPackageName = "";
+
+  // Update button event listeners to store package name
+  bookButtons.forEach(button => {
+      button.addEventListener('click', () => {
+          selectedPackageName = button.getAttribute('data-package');
+          selectedPackageText.textContent = `Reserve your slot for: ${selectedPackageName}`;
+          bookingModal.classList.add('active');
+      });
+  });
+
+  // 2. Save data to Firebase & Redirect to Payment Checkout
+  async function handleBookingSubmit(e) {
+      e.preventDefault();
+      
+      const submitBtn = e.target.querySelector('button[type="submit"]');
+      submitBtn.textContent = "Processing...";
+      submitBtn.disabled = true;
+
+      const customerData = {
+          name: document.getElementById('custName').value,
+          email: document.getElementById('custEmail').value,
+          phone: document.getElementById('custPhone').value,
+          package: selectedPackageName,
+          status: "Pending Payment",
+          createdAt: firebase.firestore.FieldValue.serverTimestamp()
+      };
+
+      try {
+          // Save customer details to Firestore collection 'bookings'
+          const docRef = await db.collection("bookings").add(customerData);
+          
+          // Pass the document ID and package details to checkout page via URL params
+          const checkoutUrl = `checkout.html?bookingId=${docRef.id}&package=${encodeURIComponent(selectedPackageName)}`;
+          window.location.href = checkoutUrl;
+
+      } catch (error) {
+          console.error("Error writing to Firebase: ", error);
+          alert("Failed to save booking details. Please try again.");
+          submitBtn.textContent = "Confirm Reservation";
+          submitBtn.disabled = false;
+      }
     </script>
 
 </body>
