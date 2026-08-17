@@ -133,7 +133,7 @@
             display: block;
         }
 
-        /* FLOATING ARROW BUTTON (Matches Bottom Right of Screenshot) */
+        /* FLOATING ARROW BUTTON */
         .floating-action-btn {
             position: absolute;
             bottom: 40px;
@@ -201,11 +201,13 @@
             line-height: 1.8;
             font-weight: 300;
         }
-/* Packages Section */
+
+        /* PACKAGES SECTION (FIXED COLORS FOR DARK BG) */
         .packages {
-            padding: 80px 6% 120px;
-            max-width: 1200px;
+            padding: 80px 8% 120px;
+            max-width: 1400px;
             margin: 0 auto;
+            background-color: #000000;
         }
 
         .section-header {
@@ -215,10 +217,17 @@
 
         .section-header h2 {
             font-size: 2rem;
-            font-weight: 700;
+            font-weight: 400;
             text-transform: uppercase;
-            letter-spacing: -0.5px;
+            letter-spacing: 0.1em;
             margin-bottom: 12px;
+            color: #ffffff;
+        }
+
+        .section-header p {
+            color: #888888;
+            font-size: 0.9rem;
+            letter-spacing: 0.02em;
         }
 
         .pricing-grid {
@@ -228,42 +237,41 @@
         }
 
         .price-card {
-            border: 1px solid #e0e0e0;
+            border: 1px solid #222222;
             padding: 48px 36px;
             border-radius: 8px;
+            background-color: #080808;
+            color: #ffffff;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            transition: border-color 0.3s ease;
+            transition: border-color 0.3s ease, transform 0.3s ease;
         }
 
         .price-card:hover {
-            border-color: #111;
+            border-color: #555555;
+            transform: translateY(-4px);
         }
 
         .price-card.featured {
-            background: #111;
-            color: #fff;
-            border-color: #111;
-        }
-
-        .price-card.featured p,
-        .price-card.featured .price-amount {
-            color: #ccc;
+            background-color: #111111;
+            border-color: #ffffff;
         }
 
         .price-title {
-            font-size: 1.1rem;
+            font-size: 1rem;
             font-weight: 600;
             margin-bottom: 12px;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 0.15em;
+            color: #ffffff;
         }
 
         .price-amount {
             font-size: 2.5rem;
-            font-weight: 700;
+            font-weight: 300;
             margin-bottom: 24px;
+            color: #ffffff;
         }
 
         .price-features {
@@ -272,38 +280,41 @@
         }
 
         .price-features li {
-            font-size: 0.9rem;
-            padding: 8px 0;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            font-size: 0.88rem;
+            padding: 10px 0;
+            color: #aaaaaa;
+            border-bottom: 1px solid #1a1a1a;
         }
 
         .price-card.featured .price-features li {
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            color: #cccccc;
+            border-bottom-color: #222222;
         }
 
         .btn-book {
             width: 100%;
             padding: 14px;
-            background: #111;
-            color: #fff;
+            background-color: #ffffff;
+            color: #000000;
             border: none;
-            border-radius: 4px;
+            border-radius: 20px;
             font-weight: 600;
             cursor: pointer;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            font-size: 0.85rem;
-            transition: background 0.3s;
-        }
-
-        .price-card.featured .btn-book {
-            background: #fff;
-            color: #111;
+            letter-spacing: 0.1em;
+            font-size: 0.75rem;
+            transition: opacity 0.3s ease, background-color 0.3s ease;
         }
 
         .btn-book:hover {
             opacity: 0.85;
         }
+
+        .price-card.featured .btn-book {
+            background-color: #ffffff;
+            color: #000000;
+        }
+
         /* FOOTER */
         footer {
             background-color: #000000;
@@ -353,7 +364,7 @@
         <header>
             <a href="index.html" class="logo">Roadstar Driving School</a>
             <nav>
-                 <a href="index.html.html">Home</a>
+                <a href="index.html">Home</a>
                 <a href="lesson.html">Lessons</a>
                 <a href="#safety">Safety</a>
                 <a href="#about">About</a>
@@ -369,10 +380,10 @@
 
         <!-- HERO CENTER VEHICLE IMAGE -->
         <div class="hero-image-wrapper">
-            <img src="cars.png">
+            <img src="cars.png" alt="Roadstar Driving Fleet">
         </div>
 
-        <!-- FLOATING ACTION BUTTON (BOTTOM RIGHT) -->
+        <!-- FLOATING ACTION BUTTON -->
         <a href="lesson.html" class="floating-action-btn" title="Explore Lessons">
             &#x2197;
         </a>
@@ -398,7 +409,8 @@
             </div>
         </div>
     </section>
-<!-- Packages Section -->
+
+    <!-- PACKAGES SECTION -->
     <section class="packages" id="packages">
         <div class="section-header">
             <h2>Training Packages</h2>
@@ -447,7 +459,8 @@
                 <button class="btn-book">Select Package</button>
             </div>
         </div>
-    </section
+    </section>
+
     <!-- FOOTER -->
     <footer>
         <div>&copy; 2026 Roadstar Driving School.</div>
@@ -457,14 +470,6 @@
             <a href="#">Privacy</a>
         </nav>
     </footer>
-<script>
-        // Mobile Menu Toggle Script
-        const hamburger = document.getElementById('hamburger');
-        const navMenu = document.getElementById('nav-menu');
 
-        hamburger.addEventListener('click', () => {
-            navMenu.classList.toggle('active');
-        });
-    </script>
 </body>
 </html>
